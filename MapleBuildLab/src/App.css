@@ -1,0 +1,170 @@
+.page {
+  padding: 16px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: #111;
+  background: #0e0f12;
+  min-height: 100vh;
+}
+
+.topBar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.title {
+  color: #fff;
+  margin: 0;
+  font-size: 18px;
+}
+
+.subTitle {
+  color: #b7bcc7;
+  font-size: 12px;
+}
+
+/* 3영역 레이아웃 */
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr 360px;
+  gap: 14px;
+}
+
+@media (max-width: 1100px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  background: #151822;
+  border: 1px solid #2a2f3e;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.panelTitle {
+  margin: 0 0 10px 0;
+  color: #e7eaf1;
+  font-size: 14px;
+}
+
+/* 입력 폼 */
+.formGrid {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 8px 10px;
+  align-items: center;
+}
+
+.label {
+  color: #c8cde0;
+  font-size: 12px;
+}
+
+.input {
+  background: #0f1118;
+  color: #fff;
+  border: 1px solid #2a2f3e;
+  border-radius: 10px;
+  padding: 8px 10px;
+  outline: none;
+}
+
+.input:focus {
+  border-color: #4b84ff;
+}
+
+/* 스탯창 느낌 */
+.statWindow {
+  background: #f2f2f2;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #cfcfcf;
+}
+
+.statHeader {
+  background: #d9d9d9;
+  padding: 8px 10px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.statBody {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.statLeft, .statRight {
+  padding: 10px;
+}
+
+.statLeft {
+  border-right: 1px solid #d0d0d0;
+  background: #efefef;
+}
+
+.statRight {
+  background: #f7f7f7;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  font-size: 12px;
+}
+
+.key {
+  color: #333;
+  font-weight: 600;
+}
+
+.val {
+  color: #111;
+  font-variant-numeric: tabular-nums;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(0,0,0,0.18);
+  margin: 10px 0;
+}
+
+/* 장비창 느낌 */
+.equipWindow {
+  background: #f2f2f2;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #cfcfcf;
+}
+
+.equipHeader {
+  background: #d9d9d9;
+  padding: 8px 10px;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.equipGrid {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.equipSlot {
+  height: 56px;
+  border: 1px solid #bdbdbd;
+  background: #e8eef6;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  color: #2b2b2b;
+  user-select: none;
+}

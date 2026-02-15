@@ -8,6 +8,7 @@ import type { CharacterInfo } from "../types/character";
  * - 입력이 비어 있을 때는 "—"로 표시해서 화면이 깔끔하게 보이게 함
  */
 export default function StatWindow(props: {
+  itemBonus?: { STR: number; DEX: number; INT: number; LUK: number };
   character: CharacterInfo;
   onChange: (next: CharacterInfo) => void;
 }) {

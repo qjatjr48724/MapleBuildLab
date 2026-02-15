@@ -12,7 +12,7 @@ import {
 type Props = {
   apiConfig?: MapleApiConfig;
   // 다음 단계(팝업/장착)에서 사용 예정
-  onPickItem?: (item: MapleItemSummary) => void;
+  onPickItem?: (item: MapleItemSummary, rect: DOMRect) => void;
   // 다음 단계(“착용중 표시”)에서 사용할 예정
   isEquippedId?: (itemId: number) => boolean;
 };
@@ -85,10 +85,11 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
 
   const canLoadMore = total == null ? true : items.length < total;
 
-  function handlePick(it: MapleItemSummary) {
-    setSelectedId(it.id);
-    onPickItem?.(it);
-  }
+  function handlePick(it: MapleItemSummary, rect: DOMRect) {
+  setSelectedId(it.id);
+  onPickItem?.(it, rect);
+}
+
 
   return (
     <section className="panel">
@@ -156,7 +157,11 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
                 <li key={it.id}>
                     <button
                     type="button"
-                    onClick={() => handlePick(it)}
+                    onClick={(e) => {
+                        const rect = (e.currentTarget as HTMLButtonElement).getBoundingClientRect();
+                        handlePick(it, rect);
+                    }}
+
                     title={tooltip}
                     style={{
                         width: "100%",

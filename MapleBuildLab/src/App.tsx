@@ -4,16 +4,17 @@ import CharacterInfoPanel from "./components/CharacterInfoPanel";
 import StatWindow from "./components/StatWindow";
 import EquipmentGrid from "./components/EquipmentGrid";
 import type { CharacterInfo } from "./types/character";
-import { JOB_BRANCHES } from "./data/jobs";
+
 
 export default function App() {
   // App이 "전체 상태"를 관리합니다.
   const [character, setCharacter] = React.useState<CharacterInfo>(() => ({
-    name: "단단단창",
-    level: 27,
-    jobGroup: "전사",
-    jobBranch: JOB_BRANCHES.find((b) => b.id === "warrior_darkknight")?.id ?? "warrior_darkknight",
+    name: "",
+    level: "",
+    jobGroup: "",
+    jobId: "",
   }));
+
 
   return (
     <div className="page">

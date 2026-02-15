@@ -3,7 +3,9 @@ import React from "react";
 import CharacterInfoPanel from "./components/CharacterInfoPanel";
 import StatWindow from "./components/StatWindow";
 import EquipmentGrid from "./components/EquipmentGrid";
+import ItemListPanel from "./components/ItemListPanel";
 import type { CharacterInfo } from "./types/character";
+
 
 
 export default function App() {
@@ -28,6 +30,7 @@ export default function App() {
         <CharacterInfoPanel value={character} onChange={setCharacter} />
         <StatWindow character={character} onChange={setCharacter} />
         <EquipmentGrid />
+        <ItemListPanel />
       </main>
     </div>
   );

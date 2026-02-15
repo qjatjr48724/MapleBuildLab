@@ -5,3 +5,14 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
 })
+
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly VITE_MS_REGION?: string;
+  readonly VITE_MS_VERSION?: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}

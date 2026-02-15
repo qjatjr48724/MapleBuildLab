@@ -13,6 +13,7 @@ export default function App() {
     level: "",
     jobGroup: "",
     jobId: "",
+    baseStats: { STR: 0, DEX: 0, INT: 0, LUK: 0 },
   }));
 
 
@@ -25,7 +26,7 @@ export default function App() {
 
       <main className="layout">
         <CharacterInfoPanel value={character} onChange={setCharacter} />
-        <StatWindow character={character} />
+        <StatWindow character={character} onChange={setCharacter} />
         <EquipmentGrid />
       </main>
     </div>

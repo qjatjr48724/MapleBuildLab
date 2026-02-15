@@ -139,7 +139,8 @@
 .equipWindow {
   background: #f2f2f2;
   border-radius: 10px;
-  overflow: hidden;
+  overflow-x: auto;
+  overflow-y: hidden;
   border: 1px solid #cfcfcf;
 }
 
@@ -151,14 +152,74 @@
 }
 
 .equipGrid {
-  padding: 10px;
+  padding: 6px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  width: max-content;
+
+  --slot: clamp(48px, 5.4vw, 59px);
+  grid-template-columns: repeat(5, var(--slot));
+  grid-auto-rows: var(--slot);
+
+  gap: 6px;
+  justify-content: center;
 }
 
+
+
+
+/* ✅ 7행 × 5열, 너가 준 좌표 그대로 */
+.equipGridAreas {
+  grid-template-areas:
+    ".        cap      .        .        ."       /* row 1 */
+    "medal    forehead .        ring1    ring2"   /* row 2 */
+    ".        .        eye      ear      ."       /* row 3 */
+    "mantle   clothes  pendant  weapon   shield"  /* row 4 */
+    "gloves   pants    belt     ring3    ring4"   /* row 5 */
+    ".        .        shoes    .        ."       /* row 6 */
+    "taming   saddle   mob      petacc   .";      /* row 7 */
+}
+
+
+
+/* 각 슬롯에 grid-area 할당 */
+.area-cap { grid-area: cap; }
+
+.area-medal { grid-area: medal; }
+.area-forehead { grid-area: forehead; }
+
+.area-ring1 { grid-area: ring1; }
+.area-ring2 { grid-area: ring2; }
+.area-ring3 { grid-area: ring3; }
+.area-ring4 { grid-area: ring4; }
+
+.area-eye { grid-area: eye; }
+.area-ear { grid-area: ear; }
+
+.area-mantle { grid-area: mantle; }
+.area-clothes { grid-area: clothes; }
+.area-pendant { grid-area: pendant; }
+.area-weapon { grid-area: weapon; }
+.area-shield { grid-area: shield; }
+
+.area-gloves { grid-area: gloves; }
+.area-pants { grid-area: pants; }
+.area-belt { grid-area: belt; }
+
+.area-shoes { grid-area: shoes; }
+
+.area-taming { grid-area: taming; }
+.area-saddle { grid-area: saddle; }
+.area-mob { grid-area: mob; }
+.area-petacc { grid-area: petacc; }
+
+
+
+
 .equipSlot {
-  height: 56px;
+  /* height 삭제 */
+  width: 100%;
+  height: 100%;
+
   border: 1px solid #bdbdbd;
   background: #e8eef6;
   border-radius: 8px;
@@ -168,6 +229,7 @@
   color: #2b2b2b;
   user-select: none;
 }
+
 .statValue {
   display: inline-block;
   min-width: 72px; /* "999 (+99)" 정도까지 여유 */

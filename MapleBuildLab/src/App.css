@@ -154,9 +154,9 @@
 .equipGrid {
   padding: 6px;
   display: grid;
-  width: max-content;
+  width: auto;
 
-  --slot: clamp(48px, 5.4vw, 59px);
+  --slot: clamp(48px, 5.4vw, 50px);
   grid-template-columns: repeat(5, var(--slot));
   grid-auto-rows: var(--slot);
 
@@ -252,4 +252,33 @@
 
 .statArrow:active {
   transform: translateY(1px);
+}
+
+/* ✅ 위 3개 + 아래 1개(전체폭) 레이아웃 */
+.layoutGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(280px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+/* 각 패널이 grid 안에서 꽉 차게 */
+.gridItem {
+  min-width: 0; /* 긴 내용이 있어도 레이아웃 깨짐 방지 */
+}
+
+/* ✅ 아래 아이템 목록은 3칸 전부 차지 */
+.fullRow {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* 모바일/좁은 화면에서는 1열로 자연스럽게 */
+@media (max-width: 1000px) {
+  .layoutGrid {
+    grid-template-columns: 1fr;
+  }
+  .fullRow {
+    grid-column: auto;
+  }
 }

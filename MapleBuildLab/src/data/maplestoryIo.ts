@@ -29,22 +29,33 @@ export async function fetchItem(cfg: MapleApiConfig, itemId: number): Promise<Ma
 
   const res = await fetch(url);
   if (!res.ok) {
-    throw new Error(`아이템 조회 실패: ${res.status} ${res.statusText}`);
-  }
+    const text = await res.text().catch(() => "");
+    throw new Error(`아이템 조회 실패: ${res.status} ${res.statusText} ${text}`);
+    }
+
 
   const data = (await res.json()) as MapleItem;
 
-  if (typeof data?.name !== "string") {
-    throw new Error("아이템 응답에 name이 없습니다.");
-  }
+  // ✅ name이 없을 수도 있으니 여러 후보에서 추출하고, 없으면 ID로 대체
+    const nameCandidate =
+    (data as any)?.name ??
+    (data as any)?.itemName ??
+    (data as any)?.meta?.name ??
+    (data as any)?.data?.name;
 
-  // ✅ spread를 먼저 하고 id/name을 마지막에 확정 (타입 충돌 방지)
-  return {
-    ...data,
-    id: itemId,
-    name: data.name,
-  };
-}
+    const safeName = typeof nameCandidate === "string" && nameCandidate.trim()
+    ? nameCandidate
+    : `#${itemId}`;
+
+
+    // ✅ spread를 먼저 하고 id/name을 마지막에 확정 (타입 충돌 방지)
+    return {
+        ...data,
+        id: itemId,
+        name: safeName,
+        };
+
+    }
 
 /** item/list 응답용 요약 타입 (보통 id/name) */
 export type MapleItemSummary = {

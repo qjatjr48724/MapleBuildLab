@@ -89,6 +89,7 @@ export default function App() {
       <ItemStatPopover
         open={popoverOpen}
         anchorRect={anchorRect}
+        apiConfig={MAPLE_API_DEFAULT}
         item={pickedItem}
         slotOptions={[
           { key: "cap", label: "모자" },

@@ -149,14 +149,14 @@ export default function ItemStatPopover({
     (async () => {
       try {
         const detail = await fetchItem(cfg, item.id);
-        console.log("[ItemStatPopover] fetchItem ok:", { requestedId: (item as any).id, item });
-        console.log("[ItemStatPopover] detail sample:", detail);
+        // console.log("[ItemStatPopover] fetchItem ok:", { requestedId: (item as any).id, item });
+        // console.log("[ItemStatPopover] detail sample:", detail);
 
 
         // ✅ maplestory.io 상세 응답을 우리가 쓰는 ItemStats로 변환
         const parsed = parseBaseStatsFromApi(detail);
-        console.log("[base] parsed =", parsed);
-        console.log("[base] detail keys =", Object.keys(detail ?? {}));
+        // console.log("[base] parsed =", parsed);
+        // console.log("[base] detail keys =", Object.keys(detail ?? {}));
 
         if (cancelled) return;
         setBaseStats(parsed);

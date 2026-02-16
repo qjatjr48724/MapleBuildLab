@@ -13,6 +13,9 @@ type Props = {
   apiConfig?: MapleApiConfig;
   onPickItem?: (item: MapleItemSummary, rect: DOMRect) => void;
   isEquippedId?: (itemId: number) => boolean;
+
+  // ✅ itemId -> slotKey (태깅 정보)
+  slotTagById?: Record<number, string | undefined>;
 };
 
 type ItemCacheV1 = {
@@ -27,13 +30,37 @@ function cacheKey(cfg: MapleApiConfig) {
   return `mbl_item_cache_v1_${cfg.region}_${cfg.version}`;
 }
 
-export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: Props) {
+const SLOT_TABS: Array<{ key: string; label: string }> = [
+  { key: "cap", label: "CAP" },
+  { key: "medal", label: "MEDAL" },
+  { key: "forehead", label: "FOREHEAD" },
+  { key: "eye_acc", label: "EYE" },
+  { key: "ear_acc", label: "EAR" },
+  { key: "mantle", label: "MANTLE" },
+  { key: "clothes", label: "CLOTHES" },
+  { key: "pants", label: "PANTS" },
+  { key: "gloves", label: "GLOVES" },
+  { key: "belt", label: "BELT" },
+  { key: "shoes", label: "SHOES" },
+  { key: "pendant", label: "PENDANT" },
+  { key: "weapon", label: "WEAPON" },
+  { key: "shield", label: "SHIELD" },
+  { key: "ring1", label: "RING1" },
+  { key: "ring2", label: "RING2" },
+  { key: "ring3", label: "RING3" },
+  { key: "ring4", label: "RING4" },
+  { key: "taming_mob", label: "TAMING" },
+  { key: "saddle", label: "SADDLE" },
+  { key: "mob_equip", label: "MOB EQUIP" },
+  { key: "pet_acc", label: "PET ACC" },
+];
+
+type TopTab = "all" | "tagged" | "untagged" | "equipped";
+
+export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId, slotTagById }: Props) {
   const cfg = apiConfig ?? MAPLE_API_DEFAULT;
 
-  // ✅ 페이지당 로딩 개수
   const PAGE_SIZE = 240;
-
-  // ✅ 캐시 최대 저장 개수 (localStorage 용량 방지)
   const CACHE_MAX_ITEMS = 2000;
 
   const [total, setTotal] = useState<number | null>(null);
@@ -46,19 +73,41 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState<number | null>(null);
 
-  // ✅ “캐시 복원이 끝났다”는 신호 (이게 핵심)
   const [cacheReady, setCacheReady] = useState(false);
+
+  // ✅ 새로 추가: 상단 탭 + 부위 탭
+  const [topTab, setTopTab] = useState<TopTab>("all");
+  const [slotTab, setSlotTab] = useState<string>(""); // "" = 전체(부위 미선택)
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    if (!q) return items;
+    const tags = slotTagById ?? {};
 
-    return items.filter((it) => {
+    // 1) top tab 필터
+    const byTopTab = items.filter((it) => {
+      const id = it.id;
+      const tag = tags[id];
+      const equipped = isEquippedId?.(id) ?? false;
+
+      if (topTab === "equipped") return equipped;
+      if (topTab === "tagged") return !!tag;
+      if (topTab === "untagged") return !tag;
+      return true; // all
+    });
+
+    // 2) slot tab 필터 (tagged 탭일 때 특히 유용)
+    const bySlot = slotTab
+      ? byTopTab.filter((it) => (tags[it.id] ?? "") === slotTab)
+      : byTopTab;
+
+    // 3) 검색어 필터
+    if (!q) return bySlot;
+    return bySlot.filter((it) => {
       const name = String(it.name ?? "").toLowerCase();
       const id = String(it.id ?? "");
       return name.includes(q) || id.includes(q);
     });
-  }, [items, query]);
+  }, [items, query, topTab, slotTab, slotTagById, isEquippedId]);
 
   function mergeDedupe(prev: MapleItemSummary[], next: MapleItemSummary[]) {
     const map = new Map<number, MapleItemSummary>();
@@ -67,7 +116,7 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
     return Array.from(map.values());
   }
 
-  // ✅ (1) 캐시 복원: region/version이 바뀔 때마다 1회
+  // ✅ (1) 캐시 복원
   useEffect(() => {
     setCacheReady(false);
 
@@ -76,21 +125,19 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
     setQuery("");
     setSelectedId(null);
 
+    // 탭은 유지해도 되지만, 버전 바뀌면 slotTab은 비워두는 게 안전
+    setSlotTab("");
+
     const key = cacheKey(cfg);
     const raw = localStorage.getItem(key);
-
-    console.log("[cache] restore", { key, hasRaw: !!raw });
 
     if (raw) {
       try {
         const parsed = JSON.parse(raw) as ItemCacheV1;
-
         if (parsed?.version === 1 && Array.isArray(parsed.items)) {
           setItems(parsed.items);
           setTotal(typeof parsed.total === "number" ? parsed.total : null);
           setCursor(typeof parsed.cursor === "number" ? parsed.cursor : parsed.items.length);
-
-          console.log("[cache] restored items =", parsed.items.length, "cursor =", parsed.cursor);
         } else {
           setItems([]);
           setTotal(null);
@@ -107,22 +154,19 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
       setCursor(0);
     }
 
-    // ✅ 복원이 끝난 뒤에만 cacheReady=true
     setCacheReady(true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cfg.region, cfg.version]);
 
-  // ✅ (2) 자동 초기 로딩: “캐시 복원 끝 + 캐시가 비어있을 때만”
-  // ---- 이게 너가 찾던 "기존 자동 로딩 useEffect"이고,
-  // ---- 기존에는 타이밍 문제로 캐시를 240개로 덮어쓰곤 했어.
+  // ✅ (2) 캐시가 없을 때만 자동 로딩
   useEffect(() => {
     if (!cacheReady) return;
-    if (items.length > 0) return; // 캐시가 있으면 자동 로딩 X
+    if (items.length > 0) return;
     void loadInitial();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [cacheReady, items.length, cfg.region, cfg.version]);
 
-  // ✅ (3) 캐시 저장: “복원 끝난 이후”에만 저장
+  // ✅ (3) 캐시 저장
   useEffect(() => {
     if (!cacheReady) return;
 
@@ -137,13 +181,8 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
           cursor,
           items: trimmed,
         };
-
-        console.log("[cache] save", { key, items: trimmed.length, cursor, total });
-
         localStorage.setItem(key, JSON.stringify(payload));
-      } catch {
-        // localStorage 용량 초과 등은 조용히 무시
-      }
+      } catch {}
     }, 250);
 
     return () => window.clearTimeout(handle);
@@ -197,14 +236,41 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
     try {
       localStorage.removeItem(cacheKey(cfg));
     } catch {}
-
     setTotal(null);
     setItems([]);
     setCursor(0);
     setQuery("");
     setSelectedId(null);
-
     void loadInitial();
+  }
+
+  function TabButton({
+    active,
+    children,
+    onClick,
+  }: {
+    active: boolean;
+    children: React.ReactNode;
+    onClick: () => void;
+  }) {
+    return (
+      <button
+        type="button"
+        onClick={onClick}
+        style={{
+          border: active ? "1px solid #999" : "1px solid #e5e5e5",
+          background: active ? "rgba(0,0,0,0.06)" : "white",
+          color: active ? "#fff" : "#444",   // ✅ 추가: 글자색 고정
+          borderRadius: 10,
+          padding: "6px 10px",
+          cursor: "pointer",
+          fontSize: 12,
+          fontWeight: 600,
+        }}
+      >
+        {children}
+      </button>
+    );
   }
 
   return (
@@ -218,6 +284,54 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
         </div>
       </div>
 
+      {/* ✅ 상단 탭 */}
+      <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
+        <TabButton active={topTab === "all"} onClick={() => setTopTab("all")}>
+          전체
+        </TabButton>
+        <TabButton active={topTab === "tagged"} onClick={() => setTopTab("tagged")}>
+          태그됨(부위확정)
+        </TabButton>
+        <TabButton active={topTab === "untagged"} onClick={() => setTopTab("untagged")}>
+          미분류
+        </TabButton>
+        <TabButton active={topTab === "equipped"} onClick={() => setTopTab("equipped")}>
+          착용중
+        </TabButton>
+
+        <div style={{ flex: "1 1 auto" }} />
+
+        <button onClick={() => void loadInitial()} disabled={loading} className="button">
+          새로고침(처음부터)
+        </button>
+        <button onClick={clearCache} disabled={loading} className="button">
+          캐시 초기화
+        </button>
+      </div>
+
+      {/* ✅ 부위 탭: tagged/untagged/all 어디서든 쓸 수 있지만, 특히 tagged에서 강력 */}
+      <div
+        style={{
+          marginTop: 10,
+          display: "flex",
+          gap: 6,
+          flexWrap: "wrap",
+          border: "1px solid #eee",
+          borderRadius: 10,
+          padding: 8,
+          background: "rgba(0,0,0,0.02)",
+        }}
+      >
+        <TabButton active={slotTab === ""} onClick={() => setSlotTab("")}>
+          전체 부위
+        </TabButton>
+        {SLOT_TABS.map((s) => (
+          <TabButton key={s.key} active={slotTab === s.key} onClick={() => setSlotTab(s.key)}>
+            {s.label}
+          </TabButton>
+        ))}
+      </div>
+
       <div style={{ marginTop: 10, display: "flex", gap: 8, flexWrap: "wrap" }}>
         <input
           value={query}
@@ -226,14 +340,6 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
           className="input"
           style={{ flex: "1 1 260px" }}
         />
-
-        <button onClick={() => void loadInitial()} disabled={loading} className="button">
-          새로고침(처음부터)
-        </button>
-
-        <button onClick={clearCache} disabled={loading} className="button">
-          캐시 초기화
-        </button>
       </div>
 
       {error && (
@@ -265,8 +371,9 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
           {filtered.map((it) => {
             const isSel = it.id === selectedId;
             const equipped = isEquippedId?.(it.id) ?? false;
+            const slotTag = slotTagById?.[it.id];
 
-            const tooltip = `${it.name}\nID: ${it.id}`;
+            const tooltip = `${it.name}\nID: ${it.id}${slotTag ? `\n부위: ${slotTag}` : ""}`;
 
             return (
               <li key={it.id}>
@@ -319,6 +426,7 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
 
                     <div style={{ fontSize: 11, color: "#777", marginTop: 2 }}>
                       ID: {it.id}
+                      {slotTag ? ` · ${slotTag}` : ""}
                       {equipped ? " · 착용중" : ""}
                     </div>
                   </div>
@@ -331,7 +439,8 @@ export default function ItemListPanel({ apiConfig, onPickItem, isEquippedId }: P
 
       <div style={{ marginTop: 10, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ fontSize: 12, color: "#666" }}>
-          현재 불러온 개수: {items.length.toLocaleString()} (cursor: {cursor.toLocaleString()})
+          현재 불러온 개수: {items.length.toLocaleString()} (cursor: {cursor.toLocaleString()}) · 표시:{" "}
+          {filtered.length.toLocaleString()}
         </div>
 
         <button onClick={() => void loadMore()} disabled={loading || !canLoadMore} className="button">

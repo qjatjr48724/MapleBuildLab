@@ -6,9 +6,12 @@ import EquipmentGrid from "./components/EquipmentGrid";
 import ItemListPanel from "./components/ItemListPanel";
 
 import ItemStatPopover, { type EquippedItem } from "./components/ItemStatPopover";
+import { loadSlotTags, saveSlotTags, type SlotTagMap } from "./data/slotTags";
 import { getItemIconUrl, MAPLE_API_DEFAULT, type MapleItemSummary } from "./data/maplestoryIo";
 
 import type { CharacterInfo } from "./types/character";
+
+
 
 export default function App() {
   const [character, setCharacter] = React.useState<CharacterInfo>(() => ({
@@ -23,6 +26,11 @@ export default function App() {
   const [popoverOpen, setPopoverOpen] = React.useState(false);
   const [anchorRect, setAnchorRect] = React.useState<DOMRect | null>(null);
   const [pickedItem, setPickedItem] = React.useState<MapleItemSummary | null>(null);
+  const [apiConfig, setApiConfig] = React.useState(MAPLE_API_DEFAULT); 
+  // 이미 apiConfig state가 있다면 이 줄은 “추가”가 아니라 “그걸 사용”하면 됨
+
+  const [slotTagById, setSlotTagById] = React.useState<SlotTagMap>({});
+
 
   // ✅ 슬롯별 장착 아이템 상태
   const [equippedBySlot, setEquippedBySlot] = React.useState<
@@ -41,6 +49,17 @@ export default function App() {
     }
     return sum;
   }, [equippedBySlot]);
+
+  // region/version 바뀌면 태그 로드
+  React.useEffect(() => {
+    setSlotTagById(loadSlotTags(apiConfig));
+  }, [apiConfig.region, apiConfig.version]);
+
+  // 태그 변경되면 저장
+  React.useEffect(() => {
+    saveSlotTags(apiConfig, slotTagById);
+  }, [apiConfig.region, apiConfig.version, slotTagById]);
+
 
   return (
     <div className="page">
@@ -75,10 +94,12 @@ export default function App() {
         {/* 하단 전체폭: 아이템 목록 */}
         <div className="gridItem fullRow">
           <ItemListPanel
+            slotTagById={slotTagById}
             onPickItem={(item, rect) => {
               setPickedItem(item);
               setAnchorRect(rect);
               setPopoverOpen(true);
+              
             }}
             isEquippedId={(id) => Object.values(equippedBySlot).some((x) => x?.itemId === id)}
           />

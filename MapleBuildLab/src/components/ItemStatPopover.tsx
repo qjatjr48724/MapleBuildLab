@@ -6,14 +6,14 @@ import {
   type MapleItemSummary,
 } from "../data/maplestoryIo";
 
-// 우리가 다룰 “아이템이 주는 스탯” (일단 핵심부터)
+// 우리가 다룰 “아이템이 주는 스탯”
 export type ItemStats = {
   STR: number;
   DEX: number;
   INT: number;
   LUK: number;
-  WATK: number; // 물공
-  MATK: number; // 마공
+  WATK: number;
+  MATK: number;
   ACC: number;
   AVOID: number;
   SPEED: number;
@@ -25,6 +25,12 @@ export type EquippedItem = {
   itemId: number;
   name: string;
   stats: ItemStats;
+  // ✅ 나중에 필요하면 tooltip 강화용으로 typeInfo도 저장 가능
+  typeInfo?: any;
+  requiredJobs?: string[];
+  requiredLevel?: number;
+  requiredGender?: number;
+  isCash?: boolean;
 };
 
 const emptyStats = (): ItemStats => ({
@@ -41,61 +47,93 @@ const emptyStats = (): ItemStats => ({
 });
 
 function parseBaseStatsFromApi(detail: any): ItemStats {
-  // 객체 내부를 재귀로 훑어서 key가 일치하면 숫자를 찾아내는 함수
-  const deepFindNumber = (root: any, keys: string[]) => {
-    const keySet = new Set(keys);
+  const src =
+    detail?.stats ??
+    detail?.equipStats ??
+    detail?.equip?.stats ??
+    detail?.equip ??
+    detail ??
+    {};
 
-    const walk = (node: any): number | null => {
-      if (!node) return null;
-
-      if (typeof node === "object") {
-        // 1) 현재 노드에서 키 직접 탐색
-        for (const k of Object.keys(node)) {
-          if (keySet.has(k) && typeof node[k] === "number") {
-            return node[k];
-          }
-        }
-
-        // 2) 자식 노드 재귀 탐색
-        for (const k of Object.keys(node)) {
-          const v = node[k];
-          if (typeof v === "object" && v !== null) {
-            const found = walk(v);
-            if (typeof found === "number") return found;
-          }
-        }
-      }
-
-      return null;
-    };
-
-    const res = walk(root);
-    return typeof res === "number" ? res : 0;
+  const pick = (...keys: string[]) => {
+    for (const k of keys) {
+      const v = src?.[k];
+      if (typeof v === "number") return v;
+    }
+    return 0;
   };
 
-  // 후보 key들을 “최대한 많이” 넣어둠 (나중에 JSON 구조 확정되면 정리 가능)
   return {
-    STR: deepFindNumber(detail, ["STR", "str", "incSTR", "incStr"]),
-    DEX: deepFindNumber(detail, ["DEX", "dex", "incDEX", "incDex"]),
-    INT: deepFindNumber(detail, ["INT", "int", "incINT", "incInt"]),
-    LUK: deepFindNumber(detail, ["LUK", "luk", "incLUK", "incLuk"]),
-    WATK: deepFindNumber(detail, ["WATK", "watk", "PAD", "pad", "attack", "incPAD", "incPad"]),
-    MATK: deepFindNumber(detail, ["MATK", "matk", "MAD", "mad", "magicAttack", "incMAD", "incMad"]),
-    ACC: deepFindNumber(detail, ["ACC", "acc", "accuracy", "incACC", "incAcc"]),
-    AVOID: deepFindNumber(detail, ["AVOID", "avoid", "EVA", "eva", "evasion", "incEVA", "incEva"]),
-    SPEED: deepFindNumber(detail, ["SPEED", "speed", "incSpeed"]),
-    JUMP: deepFindNumber(detail, ["JUMP", "jump", "incJump"]),
+    STR: pick("STR", "str", "incSTR", "incStr"),
+    DEX: pick("DEX", "dex", "incDEX", "incDex"),
+    INT: pick("INT", "int", "incINT", "incInt"),
+    LUK: pick("LUK", "luk", "incLUK", "incLuk"),
+    WATK: pick("WATK", "watk", "attack", "pad", "incPAD", "incPad"),
+    MATK: pick("MATK", "matk", "mad", "incMAD", "incMad"),
+    ACC: pick("ACC", "acc", "accuracy", "incACC", "incAcc"),
+    AVOID: pick("AVOID", "avoid", "evasion", "incEVA", "incEva"),
+    SPEED: pick("SPEED", "speed", "incSpeed"),
+    JUMP: pick("JUMP", "jump", "incJump"),
   };
 }
 
+// ✅ typeInfo 기반으로 “장착 가능한 슬롯”을 계산
+function inferAllowedSlots(detail: any): { key: string; label: string }[] {
+  const ti = detail?.typeInfo ?? {};
+  const overall = String(ti?.overallCategory ?? "");
+  const cat = String(ti?.category ?? "");
+  const sub = String(ti?.subCategory ?? "");
+
+  if (overall === "Equip") {
+    if (cat === "Accessory") {
+      if (sub === "Ring") {
+        return [
+          { key: "ring1", label: "RING 1" },
+          { key: "ring2", label: "RING 2" },
+          { key: "ring3", label: "RING 3" },
+          { key: "ring4", label: "RING 4" },
+        ];
+      }
+      if (sub === "Pendant") return [{ key: "pendant", label: "PENDANT" }];
+      if (sub === "Belt") return [{ key: "belt", label: "BELT" }];
+      if (sub === "Medal") return [{ key: "medal", label: "MEDAL" }];
+      if (sub === "Face Accessory") return [{ key: "forehead", label: "FOREHEAD" }];
+      if (sub === "Eye Decoration") return [{ key: "eye_acc", label: "EYE ACC" }];
+      if (sub === "Earrings" || sub === "Earring") return [{ key: "ear_acc", label: "EAR ACC" }];
+    }
+
+    if (cat === "Armor") {
+      if (sub === "Hat") return [{ key: "cap", label: "CAP" }];
+      if (sub === "Cape") return [{ key: "mantle", label: "MANTLE" }];
+      if (sub === "Top" || sub === "Overall") return [{ key: "clothes", label: "CLOTHES" }];
+      if (sub === "Bottom") return [{ key: "pants", label: "PANTS" }];
+      if (sub === "Glove") return [{ key: "gloves", label: "GLOVES" }];
+      if (sub === "Shoes") return [{ key: "shoes", label: "SHOES" }];
+      if (sub === "Shield") return [{ key: "shield", label: "SHIELD" }];
+    }
+
+    // 무기 카테고리는 서버/버전에 따라 표기가 다양할 수 있어서 “포괄” 처리
+    if (cat.includes("Weapon")) return [{ key: "weapon", label: "WEAPON" }];
+
+    // 기타
+    if (cat === "Other") {
+      if (sub === "Pet Equipment") return [{ key: "pet_acc", label: "PET ACC" }];
+    }
+    if (cat === "Mount") {
+      if (sub === "Mount") return [{ key: "taming_mob", label: "TAMING MOB" }];
+    }
+  }
+
+  // 모르면 일단 weapon(임시) — but 실제로는 “모를 경우 장착 막기”가 더 안전함
+  // 지금 단계에선 테스트 편의 위해 weapon으로 fallback
+  return [{ key: "weapon", label: "WEAPON" }];
+}
 
 type Props = {
   open: boolean;
   anchorRect: DOMRect | null;
   apiConfig?: MapleApiConfig;
   item: MapleItemSummary | null;
-
-  slotOptions: { key: string; label: string }[];
 
   onClose: () => void;
   onConfirm: (equipped: EquippedItem) => void;
@@ -109,13 +147,11 @@ function clampInt(v: string) {
 
 function decidePlacement(anchor: DOMRect) {
   const margin = 8;
-  const popoverHeightGuess = 260; // 대략치(자동 배치 판단용)
+  const popoverHeightGuess = 280;
   const spaceAbove = anchor.top;
   const spaceBelow = window.innerHeight - anchor.bottom;
 
-  const placeAbove =
-    spaceAbove > spaceBelow && spaceAbove > popoverHeightGuess + margin;
-
+  const placeAbove = spaceAbove > spaceBelow && spaceAbove > popoverHeightGuess + margin;
   return placeAbove ? "top" : "bottom";
 }
 
@@ -124,51 +160,67 @@ export default function ItemStatPopover({
   anchorRect,
   apiConfig,
   item,
-  slotOptions,
   onClose,
   onConfirm,
 }: Props) {
-  const [slotKey, setSlotKey] = React.useState(slotOptions[0]?.key ?? "weapon");
-  const [stats, setStats] = React.useState<ItemStats>(emptyStats());
   const cfg = apiConfig ?? MAPLE_API_DEFAULT;
-  const [baseStats, setBaseStats] = React.useState<ItemStats>(emptyStats());
+
+  const [allowedSlots, setAllowedSlots] = React.useState<{ key: string; label: string }[]>([
+    { key: "weapon", label: "WEAPON" },
+  ]);
+
+  const [slotKey, setSlotKey] = React.useState("weapon");
+  const [stats, setStats] = React.useState<ItemStats>(emptyStats());
+
   const [loadingBase, setLoadingBase] = React.useState(false);
   const [baseError, setBaseError] = React.useState<string | null>(null);
 
-  // 팝업 열릴 때 초기화
-  // 팝업 열릴 때: 아이템 상세를 가져와서 "기본 스탯"을 채웁니다.
+  const [meta, setMeta] = React.useState<{
+    typeInfo?: any;
+    requiredJobs?: string[];
+    requiredLevel?: number;
+    requiredGender?: number;
+    isCash?: boolean;
+  }>({});
+
   React.useEffect(() => {
     if (!open || !item) return;
 
     let cancelled = false;
 
-    setSlotKey(slotOptions[0]?.key ?? "weapon");
     setLoadingBase(true);
     setBaseError(null);
 
     (async () => {
       try {
         const detail = await fetchItem(cfg, item.id);
-        // console.log("[ItemStatPopover] fetchItem ok:", { requestedId: (item as any).id, item });
-        // console.log("[ItemStatPopover] detail sample:", detail);
-
-
-        // ✅ maplestory.io 상세 응답을 우리가 쓰는 ItemStats로 변환
-        const parsed = parseBaseStatsFromApi(detail);
-        // console.log("[base] parsed =", parsed);
-        // console.log("[base] detail keys =", Object.keys(detail ?? {}));
 
         if (cancelled) return;
-        setBaseStats(parsed);
-        // ✅ 수정 가능한 값(stats)의 초기값 = 기본 스탯
+
+        // ✅ allowed 슬롯 계산 (typeInfo 기반)
+        const slots = inferAllowedSlots(detail);
+        setAllowedSlots(slots);
+        setSlotKey(slots[0]?.key ?? "weapon");
+
+        // ✅ 기본 스탯
+        const parsed = parseBaseStatsFromApi(detail);
         setStats(parsed);
+
+        // ✅ 메타 저장(툴팁 등)
+        setMeta({
+          typeInfo: detail?.typeInfo,
+          requiredJobs: detail?.requiredJobs,
+          requiredLevel: detail?.requiredLevel,
+          requiredGender: detail?.requiredGender,
+          isCash: detail?.isCash,
+        });
       } catch (e) {
-        console.error("[ItemStatPopover] fetchItem failed:", e);
         if (cancelled) return;
         setBaseError(e instanceof Error ? e.message : "기본 스탯 조회 실패");
-        // 실패해도 입력은 가능하게 0으로
-        setBaseStats(emptyStats());
+        setAllowedSlots([{ key: "weapon", label: "WEAPON" }]);
+        setSlotKey("weapon");
         setStats(emptyStats());
+        setMeta({});
       } finally {
         if (!cancelled) setLoadingBase(false);
       }
@@ -177,9 +229,8 @@ export default function ItemStatPopover({
     return () => {
       cancelled = true;
     };
-  }, [open, item, slotOptions, cfg.region, cfg.version]);
+  }, [open, item, cfg.region, cfg.version]);
 
-  // ESC 닫기
   React.useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -193,14 +244,11 @@ export default function ItemStatPopover({
 
   const placement = decidePlacement(anchorRect);
 
-  const left = Math.min(
-    Math.max(8, anchorRect.left),
-    window.innerWidth - 340, // 팝업 폭 정도 고려
-  );
+  const left = Math.min(Math.max(8, anchorRect.left), window.innerWidth - 340);
 
   const top =
     placement === "top"
-      ? Math.max(8, anchorRect.top - 8) // 아래에서 transform으로 올림
+      ? Math.max(8, anchorRect.top - 8)
       : Math.min(window.innerHeight - 8, anchorRect.bottom + 8);
 
   const transform = placement === "top" ? "translateY(-100%)" : "translateY(0)";
@@ -216,6 +264,8 @@ export default function ItemStatPopover({
   const onClickBackdrop: React.MouseEventHandler<HTMLDivElement> = (e) => {
     if (e.target === e.currentTarget) onClose();
   };
+
+  const singleSlot = allowedSlots.length === 1;
 
   return (
     <div className="popoverBackdrop" onMouseDown={onClickBackdrop}>
@@ -237,13 +287,7 @@ export default function ItemStatPopover({
         </div>
 
         {loadingBase && (
-          <div
-            style={{
-              marginTop: 8,
-              fontSize: 12,
-              color: "rgba(255,255,255,0.75)",
-            }}
-          >
+          <div style={{ marginTop: 8, fontSize: 12, color: "rgba(255,255,255,0.8)" }}>
             기본 스탯 불러오는 중...
           </div>
         )}
@@ -253,19 +297,31 @@ export default function ItemStatPopover({
           </div>
         )}
 
+        {/* ✅ 슬롯 선택: 반지처럼 여러 슬롯 가능할 때만 보여줌 */}
         <div className="popoverRow">
           <label className="popoverLabel">장착 슬롯</label>
-          <select
-            className="popoverSelect"
-            value={slotKey}
-            onChange={(e) => setSlotKey(e.target.value)}
-          >
-            {slotOptions.map((s) => (
-              <option key={s.key} value={s.key}>
-                {s.label}
-              </option>
-            ))}
-          </select>
+
+          {singleSlot ? (
+            <div style={{ color: "#111", fontWeight: 700 }}>
+              {allowedSlots[0]?.label ?? "-"}
+            </div>
+          ) : (
+            <select
+              className="popoverSelect"
+              value={slotKey}
+              onChange={(e) => setSlotKey(e.target.value)}
+              style={{
+                color: "#111",
+                background: "#f3f4f6",
+              }}
+            >
+              {allowedSlots.map((s) => (
+                <option key={s.key} value={s.key} style={{ color: "#111" }}>
+                  {s.label}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
 
         <div className="popoverGrid">
@@ -286,19 +342,9 @@ export default function ItemStatPopover({
             const key = k as keyof ItemStats;
             return (
               <div key={k} className="statRow">
-                <div className="statKey">
-                    <div>{label}</div>
-                    <div style={{ fontSize: 11, color: "rgba(255,255,255,0.65)", marginTop: 2 }}>
-                        기본 {baseStats[key]} · Δ {stats[key] - baseStats[key] >= 0 ? "+" : ""}
-                        {stats[key] - baseStats[key]}
-                    </div>
-                </div>
+                <div className="statKey">{label}</div>
                 <div className="statControls">
-                  <button
-                    type="button"
-                    className="miniBtn"
-                    onClick={() => bump(key, -1)}
-                  >
+                  <button type="button" className="miniBtn" onClick={() => bump(key, -1)}>
                     −
                   </button>
                   <input
@@ -306,17 +352,25 @@ export default function ItemStatPopover({
                     value={String(stats[key])}
                     onChange={(e) => setField(key, clampInt(e.target.value))}
                   />
-                  <button
-                    type="button"
-                    className="miniBtn"
-                    onClick={() => bump(key, +1)}
-                  >
+                  <button type="button" className="miniBtn" onClick={() => bump(key, +1)}>
                     +
                   </button>
                 </div>
               </div>
             );
           })}
+        </div>
+
+        <div style={{ marginTop: 10, fontSize: 11, color: "rgba(255,255,255,0.75)" }}>
+          {/* ✅ typeInfo 정보 표시(디버그/검증용) */}
+          {meta.typeInfo?.overallCategory ? (
+            <div>
+              {meta.typeInfo?.overallCategory} / {meta.typeInfo?.category} / {meta.typeInfo?.subCategory}
+            </div>
+          ) : null}
+          {Array.isArray(meta.requiredJobs) && meta.requiredJobs.length > 0 ? (
+            <div>요구 직업: {meta.requiredJobs.join(", ")}</div>
+          ) : null}
         </div>
 
         <div className="popoverFooter">
@@ -332,6 +386,11 @@ export default function ItemStatPopover({
                 itemId: item.id,
                 name: item.name,
                 stats,
+                typeInfo: meta.typeInfo,
+                requiredJobs: meta.requiredJobs,
+                requiredLevel: meta.requiredLevel,
+                requiredGender: meta.requiredGender,
+                isCash: meta.isCash,
               })
             }
           >

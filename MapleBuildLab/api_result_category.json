@@ -1,0 +1,2101 @@
+{
+  "equip": {
+    "accessory": [
+      {
+        "item1": "Badge",
+        "item2": 1180000,
+        "item3": 1190000
+      },
+      {
+        "item1": "Belt",
+        "item2": 1130000,
+        "item3": 1140000
+      },
+      {
+        "item1": "Earrings",
+        "item2": 1030000,
+        "item3": 1040000
+      },
+      {
+        "item1": "Emblem",
+        "item2": 1190000,
+        "item3": 1190500
+      },
+      {
+        "item1": "Face Accessory",
+        "item2": 1010000,
+        "item3": 1020000
+      },
+      {
+        "item1": "Medal",
+        "item2": 1140000,
+        "item3": 1150000
+      },
+      {
+        "item1": "Eye Decoration",
+        "item2": 1020000,
+        "item3": 1030000
+      },
+      {
+        "item1": "Earring",
+        "item2": 1030000,
+        "item3": 1040000
+      },
+      {
+        "item1": "Ring",
+        "item2": 1110000,
+        "item3": 1120000
+      },
+      {
+        "item1": "Pendant",
+        "item2": 1120000,
+        "item3": 1130000
+      },
+      {
+        "item1": "Pocket Item",
+        "item2": 1160000,
+        "item3": 1170000
+      },
+      {
+        "item1": "Power Source",
+        "item2": 1190200,
+        "item3": 1190300
+      },
+      {
+        "item1": "Shoulder Accessory",
+        "item2": 1150000,
+        "item3": 1160000
+      },
+      {
+        "item1": "Totem",
+        "item2": 1202000,
+        "item3": 1202200
+      }
+    ],
+    "armor": [
+      {
+        "item1": "Hat",
+        "item2": 1000000,
+        "item3": 1010000
+      },
+      {
+        "item1": "Cape",
+        "item2": 1100000,
+        "item3": 1110000
+      },
+      {
+        "item1": "Top",
+        "item2": 1040000,
+        "item3": 1050000
+      },
+      {
+        "item1": "Glove",
+        "item2": 1080000,
+        "item3": 1090000
+      },
+      {
+        "item1": "Overall",
+        "item2": 1050000,
+        "item3": 1060000
+      },
+      {
+        "item1": "Bottom",
+        "item2": 1060000,
+        "item3": 1070000
+      },
+      {
+        "item1": "Shield",
+        "item2": 1090000,
+        "item3": 1100000
+      },
+      {
+        "item1": "Shoes",
+        "item2": 1070000,
+        "item3": 1080000
+      },
+      {
+        "item1": "Test Armor",
+        "item2": 1690100,
+        "item3": 1690200
+      }
+    ],
+    "other": [
+      {
+        "item1": "Android",
+        "item2": 1660000,
+        "item3": 1670000
+      },
+      {
+        "item1": "Dragon Equipment",
+        "item2": 1940000,
+        "item3": 1980000
+      },
+      {
+        "item1": "Mechanical Heart",
+        "item2": 1670000,
+        "item3": 1680000
+      },
+      {
+        "item1": "Mechanic Equipment",
+        "item2": 1610000,
+        "item3": 1660000
+      },
+      {
+        "item1": "Pet Equipment",
+        "item2": 1800000,
+        "item3": 1810000
+      },
+      {
+        "item1": "Bits",
+        "item2": 1680000,
+        "item3": 1680200
+      },
+      {
+        "item1": "Shovel",
+        "item2": 1502000,
+        "item3": 1502010
+      },
+      {
+        "item1": "Pickaxe",
+        "item2": 1512000,
+        "item3": 1512010
+      },
+      {
+        "item1": "Skill Effect",
+        "item2": 1602000,
+        "item3": 1602010
+      },
+      {
+        "item1": "Pet Use",
+        "item2": 1812000,
+        "item3": 1833000
+      }
+    ],
+    "one-Handed Weapon": [
+      {
+        "item1": "Scepter",
+        "item2": 1252000,
+        "item3": 1253000
+      },
+      {
+        "item1": "One-Handed Axe",
+        "item2": 1310000,
+        "item3": 1320000
+      },
+      {
+        "item1": "Katara",
+        "item2": 1340000,
+        "item3": 1350000
+      },
+      {
+        "item1": "Cane",
+        "item2": 1360000,
+        "item3": 1370000
+      },
+      {
+        "item1": "Dagger",
+        "item2": 1330000,
+        "item3": 1340000
+      },
+      {
+        "item1": "Desperado",
+        "item2": 1232000,
+        "item3": 1233000
+      },
+      {
+        "item1": "Whip Blade",
+        "item2": 1242000,
+        "item3": 1243000
+      },
+      {
+        "item1": "One-Handed Blunt Weapon",
+        "item2": 1320000,
+        "item3": 1330000
+      },
+      {
+        "item1": "Shining Rod",
+        "item2": 1212000,
+        "item3": 1213000
+      },
+      {
+        "item1": "Breath Shooter",
+        "item2": 1214000,
+        "item3": 1215000
+      },
+      {
+        "item1": "Soul Shooter",
+        "item2": 1222000,
+        "item3": 1223000
+      },
+      {
+        "item1": "Staff",
+        "item2": 1380000,
+        "item3": 1390000
+      },
+      {
+        "item1": "One-Handed Sword",
+        "item2": 1300000,
+        "item3": 1310000
+      },
+      {
+        "item1": "Wand",
+        "item2": 1370000,
+        "item3": 1380000
+      },
+      {
+        "item1": "Test Weapon",
+        "item2": 1690000,
+        "item3": 1690100
+      },
+      {
+        "item1": "Cash",
+        "item2": 1701000,
+        "item3": 1704000
+      },
+      {
+        "item1": "Psy-limiter",
+        "item2": 1262000,
+        "item3": 1263000
+      },
+      {
+        "item1": "Chain",
+        "item2": 1272000,
+        "item3": 1273000
+      },
+      {
+        "item1": "Gauntlet",
+        "item2": 1282000,
+        "item3": 1283000
+      },
+      {
+        "item1": "Ritual Fan",
+        "item2": 1292000,
+        "item3": 1293000
+      },
+      {
+        "item1": "Bladecaster",
+        "item2": 1213000,
+        "item3": 1214000
+      }
+    ],
+    "secondary Weapon": [
+      {
+        "item1": "Ballast",
+        "item2": 1352910,
+        "item3": 1352920
+      },
+      {
+        "item1": "Magic Marble",
+        "item2": 1352950,
+        "item3": 1352960
+      },
+      {
+        "item1": "Spellbook",
+        "item2": 1352230,
+        "item3": 1352260
+      },
+      {
+        "item1": "Arrow Fletching",
+        "item2": 1352260,
+        "item3": 1352270
+      },
+      {
+        "item1": "Powder Keg",
+        "item2": 1352920,
+        "item3": 1352930
+      },
+      {
+        "item1": "Far Sight",
+        "item2": 1352910,
+        "item3": 1352920
+      },
+      {
+        "item1": "Card",
+        "item2": 1352100,
+        "item3": 1352200
+      },
+      {
+        "item1": "Iron Chain",
+        "item2": 1352220,
+        "item3": 1352230
+      },
+      {
+        "item1": "Bow Thimble",
+        "item2": 1352270,
+        "item3": 1352280
+      },
+      {
+        "item1": "Jewel",
+        "item2": 1352970,
+        "item3": 1352980
+      },
+      {
+        "item1": "Document",
+        "item2": 1352940,
+        "item3": 1352950
+      },
+      {
+        "item1": "Medal",
+        "item2": 1352200,
+        "item3": 1352210
+      },
+      {
+        "item1": "Magic Arrow",
+        "item2": 1350000,
+        "item3": 1352100
+      },
+      {
+        "item1": "Charm",
+        "item2": 1352290,
+        "item3": 1352300
+      },
+      {
+        "item1": "Orb",
+        "item2": 1352400,
+        "item3": 1352500
+      },
+      {
+        "item1": "Rosary",
+        "item2": 1352210,
+        "item3": 1352220
+      },
+      {
+        "item1": "Dagger Scabbard",
+        "item2": 1352280,
+        "item3": 1352290
+      },
+      {
+        "item1": "Wrist Band",
+        "item2": 1352900,
+        "item3": 1352910
+      },
+      {
+        "item1": "Arrowhead",
+        "item2": 1352960,
+        "item3": 1352970
+      },
+      {
+        "item1": "Jett's Core",
+        "item2": 1352300,
+        "item3": 1352310
+      },
+      {
+        "item1": "Nova's Essence",
+        "item2": 1352500,
+        "item3": 1352510
+      },
+      {
+        "item1": "Soul Ring",
+        "item2": 1352600,
+        "item3": 1352610
+      },
+      {
+        "item1": "Magnum",
+        "item2": 1352700,
+        "item3": 1352710
+      },
+      {
+        "item1": "Kodachi",
+        "item2": 1352800,
+        "item3": 1352810
+      },
+      {
+        "item1": "Whistle",
+        "item2": 1352810,
+        "item3": 1352820
+      },
+      {
+        "item1": "Jett Fists",
+        "item2": 1352820,
+        "item3": 1352830
+      },
+      {
+        "item1": "Mass",
+        "item2": 1352930,
+        "item3": 1352940
+      },
+      {
+        "item1": "Fox Marble",
+        "item2": 1353100,
+        "item3": 1353110
+      },
+      {
+        "item1": "Core Controller",
+        "item2": 1353000,
+        "item3": 1353010
+      },
+      {
+        "item1": "Charges",
+        "item2": 1353400,
+        "item3": 1353410
+      },
+      {
+        "item1": "Chess Piece",
+        "item2": 1353200,
+        "item3": 1353300
+      },
+      {
+        "item1": "Transmitter",
+        "item2": 1353300,
+        "item3": 1353400
+      },
+      {
+        "item1": "Wings",
+        "item2": 1353500,
+        "item3": 1353600
+      },
+      {
+        "item1": "Relic",
+        "item2": 1353700,
+        "item3": 1353710
+      },
+      {
+        "item1": "Lucent Wings",
+        "item2": 1353500,
+        "item3": 1353510
+      },
+      {
+        "item1": "Path",
+        "item2": 1353600,
+        "item3": 1353610
+      }
+    ],
+    "two-Handed Weapon": [
+      {
+        "item1": "Two-Handed Axe",
+        "item2": 1410000,
+        "item3": 1420000
+      },
+      {
+        "item1": "Bow",
+        "item2": 1450000,
+        "item3": 1460000
+      },
+      {
+        "item1": "Crossbow",
+        "item2": 1460000,
+        "item3": 1470000
+      },
+      {
+        "item1": "Ancient Bow",
+        "item2": 1592000,
+        "item3": 1593000
+      },
+      {
+        "item1": "Dual Bowgun",
+        "item2": 1520000,
+        "item3": 1530000
+      },
+      {
+        "item1": "Gun",
+        "item2": 1490000,
+        "item3": 1500000
+      },
+      {
+        "item1": "Hand Cannon",
+        "item2": 1530000,
+        "item3": 1540000
+      },
+      {
+        "item1": "Knuckle",
+        "item2": 1480000,
+        "item3": 1490000
+      },
+      {
+        "item1": "Two-Handed Blunt",
+        "item2": 1420000,
+        "item3": 1430000
+      },
+      {
+        "item1": "Pole Arm",
+        "item2": 1440000,
+        "item3": 1450000
+      },
+      {
+        "item1": "Spear",
+        "item2": 1430000,
+        "item3": 1440000
+      },
+      {
+        "item1": "Two-Handed Sword",
+        "item2": 1400000,
+        "item3": 1410000
+      },
+      {
+        "item1": "Claw",
+        "item2": 1470000,
+        "item3": 1480000
+      },
+      {
+        "item1": "Katana",
+        "item2": 1542000,
+        "item3": 1543000
+      },
+      {
+        "item1": "Fan",
+        "item2": 1552000,
+        "item3": 1553000
+      },
+      {
+        "item1": "Lapis",
+        "item2": 1562000,
+        "item3": 1563000
+      },
+      {
+        "item1": "Lazuli",
+        "item2": 1572000,
+        "item3": 1573000
+      },
+      {
+        "item1": "Arm Cannon",
+        "item2": 1582000,
+        "item3": 1583000
+      }
+    ],
+    "character": [
+      {
+        "item1": "Body",
+        "item2": 2000,
+        "item3": 9999
+      },
+      {
+        "item1": "Head",
+        "item2": 10000,
+        "item3": 19999
+      },
+      {
+        "item1": "Face",
+        "item2": 20000,
+        "item3": 29999
+      },
+      {
+        "item1": "Hair",
+        "item2": 30000,
+        "item3": 49999
+      },
+      {
+        "item1": "Face",
+        "item2": 50000,
+        "item3": 59999
+      },
+      {
+        "item1": "Hair",
+        "item2": 60000,
+        "item3": 69999
+      }
+    ],
+    "monster": [
+      {
+        "item1": "Crusader Codex",
+        "item2": 1172000,
+        "item3": 1172010
+      },
+      {
+        "item1": "Monster Battle",
+        "item2": 1842000,
+        "item3": 1893000
+      }
+    ],
+    "mount": [
+      {
+        "item1": "Mount",
+        "item2": 1902000,
+        "item3": 1993000
+      }
+    ]
+  },
+  "use": {
+    "consumable": [
+      {
+        "item1": "Potion",
+        "item2": 2000000,
+        "item3": 2010000
+      },
+      {
+        "item1": "Food and Drink",
+        "item2": 2010000,
+        "item3": 2022000
+      },
+      {
+        "item1": "Consumable",
+        "item2": 2022000,
+        "item3": 2024000
+      },
+      {
+        "item1": "Status Cure",
+        "item2": 2050000,
+        "item3": 2050100
+      },
+      {
+        "item1": "Pet Food",
+        "item2": 2120000,
+        "item3": 2120100
+      },
+      {
+        "item1": "Transformation",
+        "item2": 2210000,
+        "item3": 2230000
+      },
+      {
+        "item1": "EXP Potion",
+        "item2": 2230000,
+        "item3": 2240000
+      },
+      {
+        "item1": "Character Modification",
+        "item2": 2350000,
+        "item3": 2350100
+      },
+      {
+        "item1": "Transformation",
+        "item2": 2360000,
+        "item3": 2360100
+      },
+      {
+        "item1": "EXP Potion",
+        "item2": 2370000,
+        "item3": 2370100
+      },
+      {
+        "item1": "Time Saver",
+        "item2": 2390000,
+        "item3": 2390100
+      },
+      {
+        "item1": "Equipment Box",
+        "item2": 2028000,
+        "item3": 2029000
+      },
+      {
+        "item1": "Other",
+        "item2": 2430000,
+        "item3": 2440000
+      },
+      {
+        "item1": "Teleport Item",
+        "item2": 2030000,
+        "item3": 2040000
+      },
+      {
+        "item1": "Teleport Item",
+        "item2": 2320000,
+        "item3": 2323100
+      },
+      {
+        "item1": "EXP Buff",
+        "item2": 2450000,
+        "item3": 2450100
+      },
+      {
+        "item1": "Other",
+        "item2": 2520000,
+        "item3": 2520100
+      },
+      {
+        "item1": "Appearance",
+        "item2": 2540000,
+        "item3": 2545100
+      },
+      {
+        "item1": "Equipment Box",
+        "item2": 2550000,
+        "item3": 2550100
+      },
+      {
+        "item1": "Teleport Item",
+        "item2": 2620000,
+        "item3": 2620100
+      },
+      {
+        "item1": "Other",
+        "item2": 2800000,
+        "item3": 2801000
+      },
+      {
+        "item1": "Other",
+        "item2": 2900000,
+        "item3": 2901000
+      },
+      {
+        "item1": "Other",
+        "item2": 2920000,
+        "item3": 2920100
+      }
+    ],
+    "armor Scroll": [
+      {
+        "item1": "Helmet",
+        "item2": 2040000,
+        "item3": 2040100
+      },
+      {
+        "item1": "Face",
+        "item2": 2040100,
+        "item3": 2040200
+      },
+      {
+        "item1": "Eye",
+        "item2": 2040200,
+        "item3": 2040300
+      },
+      {
+        "item1": "Earrings",
+        "item2": 2040300,
+        "item3": 2040400
+      },
+      {
+        "item1": "Topwear",
+        "item2": 2040400,
+        "item3": 2040500
+      },
+      {
+        "item1": "Overall",
+        "item2": 2040500,
+        "item3": 2040600
+      },
+      {
+        "item1": "Bottomwear",
+        "item2": 2040600,
+        "item3": 2040700
+      },
+      {
+        "item1": "Shoes",
+        "item2": 2040700,
+        "item3": 2040800
+      },
+      {
+        "item1": "Gloves",
+        "item2": 2040800,
+        "item3": 2040900
+      },
+      {
+        "item1": "Shield",
+        "item2": 2040900,
+        "item3": 2041000
+      },
+      {
+        "item1": "Cape",
+        "item2": 2041000,
+        "item3": 2041100
+      },
+      {
+        "item1": "Ring",
+        "item2": 2041100,
+        "item3": 2041200
+      },
+      {
+        "item1": "Pendant",
+        "item2": 2041200,
+        "item3": 2041300
+      },
+      {
+        "item1": "Belts",
+        "item2": 2041300,
+        "item3": 2041400
+      },
+      {
+        "item1": "Belts",
+        "item2": 2046400,
+        "item3": 2046500
+      },
+      {
+        "item1": "Shoulder",
+        "item2": 2041500,
+        "item3": 2041600
+      },
+      {
+        "item1": "Armor",
+        "item2": 2046200,
+        "item3": 2046300
+      },
+      {
+        "item1": "Accessory",
+        "item2": 2046300,
+        "item3": 2046400
+      },
+      {
+        "item1": "Armor",
+        "item2": 2046500,
+        "item3": 2046600
+      },
+      {
+        "item1": "Armor",
+        "item2": 2046600,
+        "item3": 2046700
+      },
+      {
+        "item1": "Accessory",
+        "item2": 2046700,
+        "item3": 2046800
+      },
+      {
+        "item1": "Accessory",
+        "item2": 2046800,
+        "item3": 2046900
+      },
+      {
+        "item1": "Equipment",
+        "item2": 2047900,
+        "item3": 2048000
+      },
+      {
+        "item1": "Pet",
+        "item2": 2048000,
+        "item3": 2048100
+      },
+      {
+        "item1": "Equipment",
+        "item2": 2048100,
+        "item3": 2048200
+      },
+      {
+        "item1": "Equipment",
+        "item2": 2048500,
+        "item3": 2048600
+      },
+      {
+        "item1": "Equipment",
+        "item2": 2048600,
+        "item3": 2048700
+      },
+      {
+        "item1": "Equipment",
+        "item2": 2048700,
+        "item3": 2048800
+      },
+      {
+        "item1": "Pet",
+        "item2": 2048800,
+        "item3": 2048900
+      },
+      {
+        "item1": "Accessory",
+        "item2": 2049200,
+        "item3": 2049300
+      },
+      {
+        "item1": "Accessory",
+        "item2": 2615000,
+        "item3": 2615100
+      },
+      {
+        "item1": "Armor",
+        "item2": 2616200,
+        "item3": 2616300
+      },
+      {
+        "item1": "Armor",
+        "item2": 2616000,
+        "item3": 2616100
+      },
+      {
+        "item1": "Accessory",
+        "item2": 2643000,
+        "item3": 2643100
+      }
+    ],
+    "weapon Scroll": [
+      {
+        "item1": "Shining Rod",
+        "item2": 2042100,
+        "item3": 2042200
+      },
+      {
+        "item1": "Soul Shooter",
+        "item2": 2042200,
+        "item3": 2042300
+      },
+      {
+        "item1": "Desperado",
+        "item2": 2042300,
+        "item3": 2042400
+      },
+      {
+        "item1": "Whip Blade",
+        "item2": 2042400,
+        "item3": 2042500
+      },
+      {
+        "item1": "One-Handed Sword",
+        "item2": 2043000,
+        "item3": 2043100
+      },
+      {
+        "item1": "One-Handed Axe",
+        "item2": 2043100,
+        "item3": 2043200
+      },
+      {
+        "item1": "One-Handed BW",
+        "item2": 2043200,
+        "item3": 2043300
+      },
+      {
+        "item1": "Dagger",
+        "item2": 2043300,
+        "item3": 2043400
+      },
+      {
+        "item1": "Katara",
+        "item2": 2043400,
+        "item3": 2043500
+      },
+      {
+        "item1": "Cane",
+        "item2": 2043600,
+        "item3": 2043700
+      },
+      {
+        "item1": "Wand",
+        "item2": 2043700,
+        "item3": 2043800
+      },
+      {
+        "item1": "Staff",
+        "item2": 2043800,
+        "item3": 2043900
+      },
+      {
+        "item1": "Two-Handed Sword",
+        "item2": 2044000,
+        "item3": 2044100
+      },
+      {
+        "item1": "Two-Handed Axe",
+        "item2": 2044100,
+        "item3": 2044200
+      },
+      {
+        "item1": "Two-Handed BW",
+        "item2": 2044200,
+        "item3": 2044300
+      },
+      {
+        "item1": "Spear",
+        "item2": 2044300,
+        "item3": 2044400
+      },
+      {
+        "item1": "Polearm",
+        "item2": 2044400,
+        "item3": 2044500
+      },
+      {
+        "item1": "Bow",
+        "item2": 2044500,
+        "item3": 2044600
+      },
+      {
+        "item1": "Crossbow",
+        "item2": 2044600,
+        "item3": 2044700
+      },
+      {
+        "item1": "Claw",
+        "item2": 2044700,
+        "item3": 2044800
+      },
+      {
+        "item1": "Knuckle",
+        "item2": 2044800,
+        "item3": 2044900
+      },
+      {
+        "item1": "Gun",
+        "item2": 2044900,
+        "item3": 2045000
+      },
+      {
+        "item1": "Dual Bowgun",
+        "item2": 2045200,
+        "item3": 2045300
+      },
+      {
+        "item1": "Hand Cannon",
+        "item2": 2045300,
+        "item3": 2045400
+      },
+      {
+        "item1": "Katana",
+        "item2": 2045400,
+        "item3": 2045500
+      },
+      {
+        "item1": "Fan",
+        "item2": 2045500,
+        "item3": 2045600
+      },
+      {
+        "item1": "One-Handed Weapon",
+        "item2": 2046000,
+        "item3": 2046100
+      },
+      {
+        "item1": "Two-Handed Weapon",
+        "item2": 2046100,
+        "item3": 2046200
+      },
+      {
+        "item1": "One-Handed Weapon",
+        "item2": 2046900,
+        "item3": 2047000
+      },
+      {
+        "item1": "Two-Handed Weapon",
+        "item2": 2047800,
+        "item3": 2047900
+      },
+      {
+        "item1": "Zero",
+        "item2": 2048900,
+        "item3": 2049000
+      },
+      {
+        "item1": "Two-Handed Weapon",
+        "item2": 2612000,
+        "item3": 2612100
+      },
+      {
+        "item1": "One-Handed Weapon",
+        "item2": 2613000,
+        "item3": 2613100
+      },
+      {
+        "item1": "One-Handed Weapon",
+        "item2": 2640000,
+        "item3": 2640100
+      }
+    ],
+    "special Scroll": [
+      {
+        "item1": "Clean Slate Scroll",
+        "item2": 2049000,
+        "item3": 2049100
+      },
+      {
+        "item1": "Slot Carver",
+        "item2": 2048200,
+        "item3": 2048305
+      },
+      {
+        "item1": "Bonus Potential Scroll",
+        "item2": 2048305,
+        "item3": 2048400
+      },
+      {
+        "item1": "Chaos Scroll",
+        "item2": 2049100,
+        "item3": 2049200
+      },
+      {
+        "item1": "Equip Enhancement",
+        "item2": 2049300,
+        "item3": 2049400
+      },
+      {
+        "item1": "Potential Scroll",
+        "item2": 2049400,
+        "item3": 2049500
+      },
+      {
+        "item1": "Awakening Stamp",
+        "item2": 2049500,
+        "item3": 2049600
+      },
+      {
+        "item1": "Innocence Scroll",
+        "item2": 2049600,
+        "item3": 2049700
+      },
+      {
+        "item1": "Potential Scroll",
+        "item2": 2049700,
+        "item3": 2049800
+      },
+      {
+        "item1": "Fusion Anvil",
+        "item2": 2049900,
+        "item3": 2050000
+      },
+      {
+        "item1": "White Scroll",
+        "item2": 2340000,
+        "item3": 2340100
+      },
+      {
+        "item1": "Hammer",
+        "item2": 2470000,
+        "item3": 2470100
+      },
+      {
+        "item1": "Magnifying Glass",
+        "item2": 2460000,
+        "item3": 2460100
+      },
+      {
+        "item1": "Hammer",
+        "item2": 2471000,
+        "item3": 2471100
+      },
+      {
+        "item1": "Time Extension",
+        "item2": 2490000,
+        "item3": 2490100
+      },
+      {
+        "item1": "Lucky Day Scroll",
+        "item2": 2530000,
+        "item3": 2530100
+      },
+      {
+        "item1": "Protection Scroll",
+        "item2": 2531000,
+        "item3": 2531100
+      },
+      {
+        "item1": "Safety Scroll",
+        "item2": 2532000,
+        "item3": 2532100
+      },
+      {
+        "item1": "Guardian Scroll",
+        "item2": 2533000,
+        "item3": 2533100
+      },
+      {
+        "item1": "Equipment Change",
+        "item2": 2570000,
+        "item3": 2570100
+      },
+      {
+        "item1": "Soul Weapon",
+        "item2": 2590000,
+        "item3": 2600000
+      },
+      {
+        "item1": "Equipment Change",
+        "item2": 2600000,
+        "item3": 2600100
+      },
+      {
+        "item1": "Equipment Change",
+        "item2": 2610000,
+        "item3": 2610100
+      },
+      {
+        "item1": "Miracle Cube",
+        "item2": 2710000,
+        "item3": 2712000
+      },
+      {
+        "item1": "Trade",
+        "item2": 2720000,
+        "item3": 2720100
+      },
+      {
+        "item1": "Slot Carver",
+        "item2": 2930000,
+        "item3": 2930100
+      }
+    ],
+    "character Modification": [
+      {
+        "item1": "Mastery Book",
+        "item2": 2280000,
+        "item3": 2292000
+      },
+      {
+        "item1": "AP/SP Reset",
+        "item2": 2500000,
+        "item3": 2500100
+      },
+      {
+        "item1": "AP/SP Reset",
+        "item2": 2501000,
+        "item3": 2501100
+      },
+      {
+        "item1": "Monster Taming",
+        "item2": 2560000,
+        "item3": 2560100
+      },
+      {
+        "item1": "Circulator",
+        "item2": 2700000,
+        "item3": 2702100
+      },
+      {
+        "item1": "Dust",
+        "item2": 2940000,
+        "item3": 2946000
+      }
+    ],
+    "tablet": [
+      {
+        "item1": "One-Handed Weapon",
+        "item2": 2047000,
+        "item3": 2047100
+      },
+      {
+        "item1": "Two-Handed Weapon",
+        "item2": 2047100,
+        "item3": 2047200
+      },
+      {
+        "item1": "Armor",
+        "item2": 2047200,
+        "item3": 2047300
+      },
+      {
+        "item1": "Accessory",
+        "item2": 2047300,
+        "item3": 2047400
+      }
+    ],
+    "projectile": [
+      {
+        "item1": "Arrow",
+        "item2": 2060000,
+        "item3": 2060005
+      },
+      {
+        "item1": "Thrown",
+        "item2": 2060005,
+        "item3": 2060007
+      },
+      {
+        "item1": "Arrow",
+        "item2": 2060007,
+        "item3": 2060100
+      },
+      {
+        "item1": "Crossbow Bolt",
+        "item2": 2061000,
+        "item3": 2061100
+      },
+      {
+        "item1": "Thrown",
+        "item2": 2070000,
+        "item3": 2070100
+      },
+      {
+        "item1": "Bullet",
+        "item2": 2330000,
+        "item3": 2330100
+      }
+    ],
+    "monster/Familiar": [
+      {
+        "item1": "Monster Card",
+        "item2": 2380000,
+        "item3": 2389000
+      },
+      {
+        "item1": "Familiar Skill",
+        "item2": 2860000,
+        "item3": 2870000
+      },
+      {
+        "item1": "Familiar Card",
+        "item2": 2870000,
+        "item3": 2880000
+      }
+    ],
+    "recipe": [
+      {
+        "item1": "Smithing Recipe",
+        "item2": 2510000,
+        "item3": 2511000
+      },
+      {
+        "item1": "Accessory Crafting Recipe",
+        "item2": 2511000,
+        "item3": 2512000
+      },
+      {
+        "item1": "Alchemy Recipe",
+        "item2": 2512000,
+        "item3": 2513000
+      }
+    ],
+    "other": [
+      {
+        "item1": "Synergy Machine",
+        "item2": 2048400,
+        "item3": 2048500
+      },
+      {
+        "item1": "Megaphone",
+        "item2": 2083000,
+        "item3": 2085000
+      },
+      {
+        "item1": "Summoning Sack",
+        "item2": 2100000,
+        "item3": 2110000
+      },
+      {
+        "item1": "Message",
+        "item2": 2160100,
+        "item3": 2160200
+      },
+      {
+        "item1": "Lie Detector",
+        "item2": 2190000,
+        "item3": 2190100
+      },
+      {
+        "item1": "Wedding",
+        "item2": 2240000,
+        "item3": 2240100
+      },
+      {
+        "item1": "Monster Taming",
+        "item2": 2260000,
+        "item3": 2270100
+      },
+      {
+        "item1": "Owl",
+        "item2": 2310000,
+        "item3": 2310100
+      },
+      {
+        "item1": "Capsule",
+        "item2": 2331000,
+        "item3": 2332100
+      },
+      {
+        "item1": "Item Pot",
+        "item2": 2440000,
+        "item3": 2441100
+      },
+      {
+        "item1": "Message",
+        "item2": 2480000,
+        "item3": 2480100
+      }
+    ]
+  },
+  "setup": {
+    "other": [
+      {
+        "item1": "Chair",
+        "item2": 3010000,
+        "item3": 3020000
+      },
+      {
+        "item1": "Extractor",
+        "item2": 3049000,
+        "item3": 3049100
+      },
+      {
+        "item1": "Container",
+        "item2": 3080000,
+        "item3": 3080100
+      },
+      {
+        "item1": "Container",
+        "item2": 3090000,
+        "item3": 3090100
+      },
+      {
+        "item1": "Title",
+        "item2": 3700000,
+        "item3": 3701000
+      },
+      {
+        "item1": "Other",
+        "item2": 3800000,
+        "item3": 3803000
+      },
+      {
+        "item1": "Decoration",
+        "item2": 3990000,
+        "item3": 3992039
+      },
+      {
+        "item1": "Key",
+        "item2": 3992039,
+        "item3": 3992100
+      },
+      {
+        "item1": "Event Item",
+        "item2": 3993000,
+        "item3": 3995000
+      },
+      {
+        "item1": "Other",
+        "item2": 3995000,
+        "item3": 3995100
+      }
+    ],
+    "commerci": [
+      {
+        "item1": "Trade Good",
+        "item2": 3100000,
+        "item3": 3101000
+      },
+      {
+        "item1": "Ship Enhancement",
+        "item2": 3102000,
+        "item3": 3103000
+      }
+    ],
+    "evolution Lab": [
+      {
+        "item1": "Core",
+        "item2": 3600000,
+        "item3": 3604000
+      },
+      {
+        "item1": "Mission",
+        "item2": 3604000,
+        "item3": 3604100
+      }
+    ],
+    "nebulite": [
+      {
+        "item1": "Rank D Nebulite",
+        "item2": 3060000,
+        "item3": 3061000
+      },
+      {
+        "item1": "Rank C Nebulite",
+        "item2": 3061000,
+        "item3": 3062000
+      },
+      {
+        "item1": "Rank B Nebulite",
+        "item2": 3062000,
+        "item3": 3063000
+      },
+      {
+        "item1": "Rank A Nebulite",
+        "item2": 3063000,
+        "item3": 3064000
+      },
+      {
+        "item1": "Rank S Nebulite",
+        "item2": 3064000,
+        "item3": 3065000
+      }
+    ]
+  },
+  "etc": {
+    "other": [
+      {
+        "item1": "Monster Drop",
+        "item2": 4000000,
+        "item3": 4010000
+      },
+      {
+        "item1": "Quest Item",
+        "item2": 4030000,
+        "item3": 4040000
+      },
+      {
+        "item1": "Cosmetic",
+        "item2": 4055000,
+        "item3": 4056000
+      },
+      {
+        "item1": "Minigame",
+        "item2": 4080000,
+        "item3": 4080200
+      },
+      {
+        "item1": "Other",
+        "item2": 4140000,
+        "item3": 4150000
+      },
+      {
+        "item1": "Pet Command",
+        "item2": 4160000,
+        "item3": 4161000
+      },
+      {
+        "item1": "Book",
+        "item2": 4161000,
+        "item3": 4170000
+      },
+      {
+        "item1": "Quest Item",
+        "item2": 4220000,
+        "item3": 4221000
+      },
+      {
+        "item1": "Effect",
+        "item2": 4290000,
+        "item3": 4290100
+      },
+      {
+        "item1": "Message",
+        "item2": 4300000,
+        "item3": 4301100
+      },
+      {
+        "item1": "Coin",
+        "item2": 4310000,
+        "item3": 4320000
+      },
+      {
+        "item1": "Other",
+        "item2": 4320000,
+        "item3": 4320100
+      },
+      {
+        "item1": "Container",
+        "item2": 4330000,
+        "item3": 4331000
+      },
+      {
+        "item1": "Item Pot",
+        "item2": 4340000,
+        "item3": 4340100
+      },
+      {
+        "item1": "Book",
+        "item2": 4350000,
+        "item3": 4351000
+      },
+      {
+        "item1": "Other",
+        "item2": 4360000,
+        "item3": 4361000
+      },
+      {
+        "item1": "EXP Ticket",
+        "item2": 4390000,
+        "item3": 4391000
+      },
+      {
+        "item1": "Event Item",
+        "item2": 4440000,
+        "item3": 4450000
+      },
+      {
+        "item1": "Book",
+        "item2": 4460000,
+        "item3": 4460100
+      }
+    ],
+    "cash Shop": [
+      {
+        "item1": "Reward Item",
+        "item2": 4170000,
+        "item3": 4171000
+      },
+      {
+        "item1": "Wedding",
+        "item2": 4210000,
+        "item3": 4215000
+      },
+      {
+        "item1": "Reward Item",
+        "item2": 4280000,
+        "item3": 4281000
+      },
+      {
+        "item1": "Reward Item",
+        "item2": 4400000,
+        "item3": 4401000
+      },
+      {
+        "item1": "Potential Lock",
+        "item2": 4410000,
+        "item3": 4411000
+      },
+      {
+        "item1": "Fusion",
+        "item2": 4420000,
+        "item3": 4420100
+      },
+      {
+        "item1": "Reward Item",
+        "item2": 4430000,
+        "item3": 4430100
+      },
+      {
+        "item1": "Coupon",
+        "item2": 4450000,
+        "item3": 4451000
+      }
+    ],
+    "crafting": [
+      {
+        "item1": "Mineral Ore",
+        "item2": 4010000,
+        "item3": 4011000
+      },
+      {
+        "item1": "Mineral Processed",
+        "item2": 4011000,
+        "item3": 4012000
+      },
+      {
+        "item1": "Rare Ore",
+        "item2": 4020000,
+        "item3": 4020100
+      },
+      {
+        "item1": "Rare Processed  Ore",
+        "item2": 4021000,
+        "item3": 4021013
+      },
+      {
+        "item1": "Crafting Item",
+        "item2": 4021013,
+        "item3": 4022000
+      },
+      {
+        "item1": "Herb",
+        "item2": 4022000,
+        "item3": 4023000
+      },
+      {
+        "item1": "Herb Oil",
+        "item2": 4023000,
+        "item3": 4023023
+      },
+      {
+        "item1": "Crafting Item",
+        "item2": 4023023,
+        "item3": 4026000
+      },
+      {
+        "item1": "Maker",
+        "item2": 4130000,
+        "item3": 4140000
+      },
+      {
+        "item1": "Maker",
+        "item2": 4250000,
+        "item3": 4261000
+      }
+    ]
+  },
+  "cash": {
+    "time Saver": [
+      {
+        "item1": "Teleport Rock",
+        "item2": 5040000,
+        "item3": 5050000
+      },
+      {
+        "item1": "Package",
+        "item2": 5330000,
+        "item3": 5340000
+      },
+      {
+        "item1": "Item Store",
+        "item2": 5450000,
+        "item3": 5451000
+      },
+      {
+        "item1": "Quest Helper",
+        "item2": 5660000,
+        "item3": 5670000
+      }
+    ],
+    "random Reward": [
+      {
+        "item1": "Special Item",
+        "item2": 5060002,
+        "item3": 5061000
+      },
+      {
+        "item1": "Special Item",
+        "item2": 5200000,
+        "item3": 5210000
+      },
+      {
+        "item1": "Gachapon",
+        "item2": 5220000,
+        "item3": 5221000
+      },
+      {
+        "item1": "Other",
+        "item2": 5221000,
+        "item3": 5222000
+      },
+      {
+        "item1": "Surprise Box",
+        "item2": 5222000,
+        "item3": 5223000
+      },
+      {
+        "item1": "Gachapon",
+        "item2": 5451000,
+        "item3": 5452000
+      },
+      {
+        "item1": "Gachapon",
+        "item2": 5490000,
+        "item3": 5500000
+      },
+      {
+        "item1": "Exchange Coupon",
+        "item2": 5530000,
+        "item3": 5534000
+      }
+    ],
+    "equipment Modification": [
+      {
+        "item1": "Other",
+        "item2": 5060000,
+        "item3": 5060002
+      },
+      {
+        "item1": "Other",
+        "item2": 5061000,
+        "item3": 5062000
+      },
+      {
+        "item1": "Miracle Cube",
+        "item2": 5062000,
+        "item3": 5062800
+      },
+      {
+        "item1": "Scroll",
+        "item2": 5063000,
+        "item3": 5065000
+      },
+      {
+        "item1": "Scroll",
+        "item2": 5067000,
+        "item3": 5069000
+      },
+      {
+        "item1": "Other",
+        "item2": 5500000,
+        "item3": 5500010
+      },
+      {
+        "item1": "Other",
+        "item2": 5502000,
+        "item3": 5503000
+      },
+      {
+        "item1": "Trade",
+        "item2": 5520000,
+        "item3": 5530000
+      },
+      {
+        "item1": "Other",
+        "item2": 5534000,
+        "item3": 5535000
+      },
+      {
+        "item1": "Upgrade Slot",
+        "item2": 5570000,
+        "item3": 5580000
+      },
+      {
+        "item1": "Other",
+        "item2": 5590000,
+        "item3": 5600000
+      },
+      {
+        "item1": "Other",
+        "item2": 5610000,
+        "item3": 5620000
+      },
+      {
+        "item1": "Scroll",
+        "item2": 5640000,
+        "item3": 5650000
+      },
+      {
+        "item1": "Other",
+        "item2": 5750000,
+        "item3": 5760000
+      }
+    ],
+    "character Modification": [
+      {
+        "item1": "SP/AP Modification",
+        "item2": 5050000,
+        "item3": 5060000
+      },
+      {
+        "item1": "Circulator",
+        "item2": 5062800,
+        "item3": 5062900
+      },
+      {
+        "item1": "Protection",
+        "item2": 5130000,
+        "item3": 5140000
+      },
+      {
+        "item1": "EXP Coupon",
+        "item2": 5210000,
+        "item3": 5220000
+      },
+      {
+        "item1": "Drop Coupon",
+        "item2": 5360000,
+        "item3": 5370000
+      },
+      {
+        "item1": "Wedding",
+        "item2": 5250000,
+        "item3": 5252000
+      },
+      {
+        "item1": "Entry Pass",
+        "item2": 5252000,
+        "item3": 5253000
+      },
+      {
+        "item1": "Other",
+        "item2": 5400000,
+        "item3": 5410000
+      },
+      {
+        "item1": "Inventory Slot",
+        "item2": 5430000,
+        "item3": 5440000
+      },
+      {
+        "item1": "Other",
+        "item2": 5500010,
+        "item3": 5502000
+      },
+      {
+        "item1": "Protection",
+        "item2": 5510000,
+        "item3": 5520000
+      },
+      {
+        "item1": "Mastery Book",
+        "item2": 5620000,
+        "item3": 5630000
+      },
+      {
+        "item1": "EXP Coupons",
+        "item2": 5710000,
+        "item3": 5720000
+      },
+      {
+        "item1": "Skill Modification",
+        "item2": 5770000,
+        "item3": 5780000
+      },
+      {
+        "item1": "Other",
+        "item2": 5820000,
+        "item3": 5830000
+      }
+    ],
+    "weapon": [
+      {
+        "item1": "Thrown",
+        "item2": 5020000,
+        "item3": 5030000
+      }
+    ],
+    "accessory": [
+      {
+        "item1": "Pendant",
+        "item2": 5550000,
+        "item3": 5560000
+      }
+    ],
+    "appearance": [
+      {
+        "item1": "Effect",
+        "item2": 5010000,
+        "item3": 5020000
+      },
+      {
+        "item1": "Hair Coupon",
+        "item2": 5150000,
+        "item3": 5151000
+      },
+      {
+        "item1": "Hair Color Coupon",
+        "item2": 5151000,
+        "item3": 5152000
+      },
+      {
+        "item1": "Face Coupon",
+        "item2": 5152000,
+        "item3": 5152100
+      },
+      {
+        "item1": "Cosmetic Lens",
+        "item2": 5152100,
+        "item3": 5152200
+      },
+      {
+        "item1": "Skin Coupon",
+        "item2": 5153000,
+        "item3": 5154000
+      },
+      {
+        "item1": "Hair Coupon",
+        "item2": 5154000,
+        "item3": 5155000
+      },
+      {
+        "item1": "Ear",
+        "item2": 5155000,
+        "item3": 5156000
+      },
+      {
+        "item1": "Facial Expression",
+        "item2": 5160000,
+        "item3": 5170000
+      },
+      {
+        "item1": "Transformation",
+        "item2": 5300000,
+        "item3": 5310000
+      },
+      {
+        "item1": "Hair Coupon",
+        "item2": 5420000,
+        "item3": 5430000
+      },
+      {
+        "item1": "Special",
+        "item2": 5800000,
+        "item3": 5800100
+      }
+    ],
+    "pet": [
+      {
+        "item1": "Pet Use",
+        "item2": 5170000,
+        "item3": 5200000
+      },
+      {
+        "item1": "Pet Food",
+        "item2": 5240000,
+        "item3": 5250000
+      },
+      {
+        "item1": "Pet Use",
+        "item2": 5380000,
+        "item3": 5390000
+      },
+      {
+        "item1": "Pet Use",
+        "item2": 5460000,
+        "item3": 5470000
+      },
+      {
+        "item1": "Pet Appearance",
+        "item2": 5780000,
+        "item3": 5790000
+      }
+    ],
+    "free Market": [
+      {
+        "item1": "Pet",
+        "item2": 5000000,
+        "item3": 5010000
+      },
+      {
+        "item1": "Hired Merchant",
+        "item2": 5030000,
+        "item3": 5040000
+      },
+      {
+        "item1": "Store Permit",
+        "item2": 5140000,
+        "item3": 5150000
+      },
+      {
+        "item1": "Other",
+        "item2": 5230000,
+        "item3": 5240000
+      },
+      {
+        "item1": "Hired Merchant",
+        "item2": 5470000,
+        "item3": 5480000
+      },
+      {
+        "item1": "Auction House",
+        "item2": 5830000,
+        "item3": 5840000
+      },
+      {
+        "item1": "Other",
+        "item2": 5990000,
+        "item3": 5990100
+      }
+    ],
+    "messenger and Social": [
+      {
+        "item1": "Weather Effect",
+        "item2": 5065000,
+        "item3": 5066000
+      },
+      {
+        "item1": "Messenger",
+        "item2": 5070000,
+        "item3": 5080000
+      },
+      {
+        "item1": "Kite",
+        "item2": 5080000,
+        "item3": 5090000
+      },
+      {
+        "item1": "Note",
+        "item2": 5090000,
+        "item3": 5100000
+      },
+      {
+        "item1": "Song",
+        "item2": 5100000,
+        "item3": 5110000
+      },
+      {
+        "item1": "Character Effect",
+        "item2": 5110000,
+        "item3": 5120000
+      },
+      {
+        "item1": "Weather Effect",
+        "item2": 5120000,
+        "item3": 5130000
+      },
+      {
+        "item1": "Character Effect",
+        "item2": 5281000,
+        "item3": 5282000
+      },
+      {
+        "item1": "Guild Forum Emoticon",
+        "item2": 5290000,
+        "item3": 5300000
+      },
+      {
+        "item1": "Messageboard",
+        "item2": 5370000,
+        "item3": 5380000
+      },
+      {
+        "item1": "Messenger",
+        "item2": 5390000,
+        "item3": 5400000
+      }
+    ],
+    "miscellaneous": [
+      {
+        "item1": "Cake vs Pie",
+        "item2": 5670000,
+        "item3": 5680000
+      },
+      {
+        "item1": "Other",
+        "item2": 5680000,
+        "item3": 5700000
+      }
+    ]
+  }
+}
